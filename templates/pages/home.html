@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
 
 {% block head_title %}
-    Hello world
+    Tweet
 {% endblock %}
 
 {{% block content %}
-    <h1>Hello world!..</h1>
+    <div class="row text-center">
+        <div class="col">
+            <h1>Welcome to Tweet!..</h1>
+        </div>
+    </div>
 
-    <div id="tweets">Loading...</div>
+    <div class="row" id="tweets">Loading...</div>
 
     <script>
         const tweetsElement = document.getElementById("tweets")
         const xhr = new XMLHttpRequest()
 
         function handleDidLike(tweet_id, currentCount) {
+            console.log(currentCount)
         }
 
-        function likeButton(tweet) {
-            return "<button class='btn btn-primary btn-sm' onclick=handleDidLike(" + tweet.id + "," + tweet.likes + ")>"+tweet.likes+" Likes</button>"
+        function likeBtn(tweet) {
+            return "<button class='btn btn-primary btn-sm' onclick=handleDidLike(" + tweet.id + "," + tweet.likes + ")>" + tweet.likes + " Likes</button>"
         }
 
         function formatTweetElement(tweet) {
-            var formattedTweet = "<div class='mb-4 tweet' id='tweet-" + tweet.id + "'>" +
-                "<p>" + tweet.content + "</p><div class='btn-group'>" + likeButton(tweet) + "</div></div>"
-            return formattedTweet
+            return "<div class='mb-4 col-12 col-md-10 mx-auto border rounded py-3 tweet' id='tweet-" + tweet.id + "'>" +
+                "<p>" + tweet.content + "</p><div class='btn-group'>" + likeBtn(tweet) + "</div></div>"
         }
 
         xhr.responseType = "json"
