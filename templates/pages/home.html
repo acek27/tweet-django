@@ -12,19 +12,30 @@
     <script>
         const tweetsElement = document.getElementById("tweets")
         const xhr = new XMLHttpRequest()
-        const method = 'GET'
-        const url = "/tweets"
-        const responType = "json"
 
-        xhr.responseType = responType
-        xhr.open(method, url)
+        function handleDidLike(tweet_id, currentCount) {
+        }
+
+        function likeButton(tweet) {
+            return "<button class='btn btn-primary btn-sm' onclick=handleDidLike(" + tweet.id + "," + tweet.likes + ")>"+tweet.likes+" Likes</button>"
+        }
+
+        function formatTweetElement(tweet) {
+            var formattedTweet = "<div class='mb-4 tweet' id='tweet-" + tweet.id + "'>" +
+                "<p>" + tweet.content + "</p><div class='btn-group'>" + likeButton(tweet) + "</div></div>"
+            return formattedTweet
+        }
+
+        xhr.responseType = "json"
+        xhr.open('GET', "/tweets")
         xhr.onload = function () {
             const serverResponse = xhr.response
             const listedItems = serverResponse.response
             var finalTweetStr = ""
             var i;
             for (i = 0; i < listedItems.length; i++) {
-                var currentItem = "<h1>" + listedItems[i].id + "</h1><p>" + listedItems[i].content + "</p>"
+                var tweetObj = listedItems[i]
+                var currentItem = formatTweetElement(tweetObj)
                 finalTweetStr += currentItem
             }
             tweetsElement.innerHTML = finalTweetStr
