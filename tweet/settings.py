@@ -24,7 +24,7 @@ SECRET_KEY = '*07op1s_tgusr7f(fbas161s4h5*_p#^bebe1kqdy%_2n7o0up'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost', 'acek.me']
 
 # Application definition
 
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'tweet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
