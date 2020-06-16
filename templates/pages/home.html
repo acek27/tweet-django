@@ -29,7 +29,7 @@
         var myErrorDiv = document.getElementById("tweet-create-form-error")
 
         function handleTweetFormError(msg, display) {
-            if (display == true) {
+            if (display === true) {
                 myErrorDiv.setAttribute("class", "d-block alert alert-danger")
                 myErrorDiv.innerText = msg
             } else {
@@ -51,7 +51,7 @@
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
             xhr.onload = function () {
                 if (xhr.status === 201) {
-                      handleTweetFormError("", false)
+                    handleTweetFormError("", false)
                     const newTweetJson = xhr.response
                     const newTweetElement = formatTweetElement(newTweetJson)
                     const ogHtml = tweetsContainerElement.innerHTML
@@ -90,8 +90,7 @@
             const xhr = new XMLHttpRequest()
             const method = 'GET'
             const url = "/tweets"
-            const responseType = "json"
-            xhr.responseType = responseType
+            xhr.responseType = "json"
             xhr.open(method, url)
             xhr.onload = function () {
                 const serverResponse = xhr.response
