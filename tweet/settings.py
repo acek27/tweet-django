@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'acek.me']
 LOGIN_URL = "/login"
+MAX_TWEET_LENGHT = 240
 
 # Application definition
 
