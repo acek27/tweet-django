@@ -24,7 +24,7 @@ SECRET_KEY = '*07op1s_tgusr7f(fbas161s4h5*_p#^bebe1kqdy%_2n7o0up'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost', 'acek.me']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'acek.me']
 LOGIN_URL = "/login"
 
 # Application definition
@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+
     'tweets'
 
 ]
