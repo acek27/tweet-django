@@ -72,6 +72,8 @@
                         alert("An error occured, try again later.")
                     }
 
+                } else if (xhr.status === 401) {
+                    alert("You must login first")
                 } else if (xhr.status === 500) {
                     alert("there was a server error")
                 }
