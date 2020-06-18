@@ -2,11 +2,24 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+function ActionBtn(props) {
+    const {tweet, action} = props
+    const className = props.className ? props.className : 'btn btn-primary btn-sm'
+    return action.type === 'like' ?  <button className={className}>{tweet.likes} Likes</button> : null
+}
+
+
 function Tweet(props) {
     const {tweet} = props
     const className = props.className ? props.className : 'col-10 mx-auto col-md-6'
     return <div className={className}>
         <p>{tweet.content}</p>
+        <div className='btn btn-group'>
+            <ActionBtn tweet={tweet} action={{type: "like"}}/>
+            <ActionBtn tweet={tweet} action={{type: "unlike"}}/>
+            <ActionBtn tweet={tweet} action={{type: "retweet"}}/>
+        </div>
     </div>
 }
 
@@ -20,7 +33,6 @@ function loadTweets(callback) {
         callback(xhr.response, xhr.status)
     }
     xhr.onerror = function (e) {
-        console.log(e)
         callback({"message": "The request was an error"}, 400)
     }
     xhr.send()
@@ -30,7 +42,6 @@ function App() {
     const [tweet, setTweets] = useState([])
     useEffect(() => {
         const myCallback = (response, status) => {
-            console.log(response, status)
             if (status === 200) {
                 setTweets(response)
             }
