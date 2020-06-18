@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'acek.me']
 LOGIN_URL = "/login"
 MAX_TWEET_LENGHT = 240
+TWEET_ACTION_OPTIONS = ["like", "unlike", "retweet"]
 
 # Application definition
 
