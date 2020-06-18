@@ -2,6 +2,13 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function Tweet(props) {
+    const {tweet} = props
+    const className = props.className ? props.className : 'col-10 mx-auto col-md-6'
+    return <div className={className}>
+        <p>{tweet.content}</p>
+    </div>
+}
 
 function loadTweets(callback) {
     const xhr = new XMLHttpRequest()
@@ -37,11 +44,11 @@ function App() {
                 <p>
                     Edit <code>src/App.js</code> and save to reload.
                 </p>
-                <p>
-                    {tweet.map((tweet, index) => {
-                        return <li>{tweet.content}</li>
+                <div>
+                    {tweet.map((item, index) => {
+                        return <Tweet tweet={item} key={`${index}-{item.id}`}/>
                     })}
-                </p>
+                </div>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
